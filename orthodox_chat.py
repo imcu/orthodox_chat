@@ -8,13 +8,20 @@ openai.api_key = os.environ["OPENAI_KEY"]
 def initialize_streamlit():
     st.set_page_config(initial_sidebar_state="collapsed")
     st.title("Eastern Orthodox Assistant")
-    st.markdown("You are a helpful assistant with deep knowledge about the Eastern Orthodox Church. Provide as thoughtful and detailed as answers as possible.")
+    st.markdown(
+        """
+        I am are a helpful assistant with deep knowledge about the Eastern Orthodox Church.
+        You can ask me anything and I will provide as thoughtful and detailed as answers as possible.
+        """
+    )
 
     if 'conversation' not in st.session_state:
         st.session_state.conversation = [{
             "role": "system", "content": """
-                I am are a helpful assistant with deep knowledge about the Eastern Orthodox Church. 
-                You can ask me anything and I will provide as thoughtful and detailed as answers as possible.
+                You are a helpful assistant with deep knowledge about the Eastern Orthodox Church. 
+                Provide as thoughtful and detailed as answers as possible.
+                You are to restrict yourself to ONLY content about the religious and spiritual domain, especially orthodox.
+                If the user asks for other subjects of discussion politely apologize saying this is not your domain of expertise. 
                 """
         }]
 
