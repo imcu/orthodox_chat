@@ -7,11 +7,10 @@ openai.api_key = os.environ["OPENAI_KEY"]
 
 def initialize_streamlit():
     st.set_page_config(initial_sidebar_state="collapsed")
-    st.title("Eastern Orthodox Assistant")
+    st.title("Orthodox assistant")
     st.markdown(
         """
-        I am are a helpful assistant with deep knowledge about the Eastern Orthodox Church.
-        You can ask me anything and I will provide as thoughtful and detailed as answers as possible.
+        I am a AI assistant with lots of knowledge about the Orthodox Church.
         """
     )
 
@@ -28,7 +27,7 @@ def initialize_streamlit():
 
 def main():
     initialize_streamlit()
-    question = st.text_input("question")
+    question = st.text_input("What do you want to talk about?")
     if question == "": return
     st.session_state.conversation.append({"role": "user", "content": question})
     response = openai.ChatCompletion.create(
